@@ -12,9 +12,20 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import environ
+
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, True)
+)
+callback_url = env('CALLBACK_URL')
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,8 +37,8 @@ SECRET_KEY = 'django-insecure-_10^p+&r42^ww3)i4royjh-=50tm=5^g+07khzv!q1-s34u^pu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['c085-2600-8800-4c41-2200-a5e2-c69e-d613-e406.ngrok-free.app', 'localhost', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://c085-2600-8800-4c41-2200-a5e2-c69e-d613-e406.ngrok-free.app']
+
+ALLOWED_HOSTS = ['*']
 
 
 

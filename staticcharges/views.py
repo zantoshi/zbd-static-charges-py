@@ -12,7 +12,10 @@ import zebedee
 import environ
 
 env = environ.Env()
+
 apikey = env('ZEBEDEE_API_KEY')
+callback_url = env('CALLBACK_URL')
+
 
 def index(request):
     static_charges = StaticCharge.objects.all()
@@ -39,7 +42,7 @@ def create_static_charge(request):
             "maxAmount": request.POST["max_amount"] + "000",
             "description": request.POST["description"],
             "identifier" : request.POST["identifier"],
-            "callbackUrl": "https://c085-2600-8800-4c41-2200-a5e2-c69e-d613-e406.ngrok-free.app/callback/",
+            "callbackUrl": f"{callback_url}/callback/",
             "successMessage": "Congratulations your payment was successful!"
         }
         res = requests.post(url, headers=heads, data=json.dumps(payload)).json()
@@ -71,7 +74,7 @@ def edit_static_charge(request, id):
             "maxAmount": request.POST["max_amount"] + "000",
             "description": request.POST["description"],
             "identifier" : request.POST["identifier"],
-            "callbackUrl": "https://c085-2600-8800-4c41-2200-a5e2-c69e-d613-e406.ngrok-free.app/callback/",
+            "callbackUrl": f"{callback_url}/callback/",
             "successMessage": "Congratulations your payment was successful!"
         }
         res = requests.patch(url, headers=heads, data=json.dumps(payload)).json()
