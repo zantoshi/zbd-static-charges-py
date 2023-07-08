@@ -1,0 +1,44 @@
+{% extends 'staticcharges/base.html' %}
+{% load static %}
+
+{% block title %} Success! {% endblock %}
+
+
+{% block content %}
+
+    <!-- Card Grid -->
+    <div class="container content-space-2 content-space-lg-3" id="blogSection">
+        <!-- Heading -->
+        <div class="row" style="color: #d2daea;">
+        <div class="col-3 my-3">
+            <a href="{% url 'index' %}" class="btn btn-outline-primary">Go home</a>
+        </div>
+        <h3 style=" color: #d2daea;">ZBD Static Charge</h3>
+        <p>Check this specific static charge.</p>
+        <div id="qrcode"></div>
+        </div>
+        <!-- End Heading -->
+        <a href="{% url 'edit-static-charge' static_charge_id %}" class="btn btn-primary my-2">Edit</a>
+
+        </div>
+    </div>
+
+    <!-- End Card Grid -->
+    
+    <script src="{% static 'assets/js/qrcode.min.js' %}"></script>
+    <script type="text/javascript">
+      new QRCode(document.getElementById("qrcode"), "{{static_charge}}");
+      function copyInvoice() {
+        // Get the text field
+        var copyText = document.getElementById("invoiceInput");
+      
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+      
+         // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+      
+      }
+    </script>
+{% endblock %}

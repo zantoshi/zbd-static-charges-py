@@ -1,0 +1,35 @@
+{% extends 'staticcharges/base.html' %}
+{% load static %}
+
+{% block title %} Success! {% endblock %}
+
+
+{% block content %}
+
+    <!-- Card Grid -->
+    <div class="container content-space-2 content-space-lg-3" id="blogSection">
+        <!-- Heading -->
+        <div class="row" style="color: #d2daea;">
+        <div class="col-3 my-3">
+            <a href="{% url 'index' %}" class="btn btn btn-outline-primary">Go home</a>
+        </div>
+        <h3 style=" color: #d2daea;">ZBD Static Charges</h3>
+        <p>Create a Static Charge</p>
+        <div class="col-md-12 col-lg-8">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                {{ form }}
+                </table>
+                <input class="btn btn-primary mt-3" type="submit" value="Submit">
+            </form>
+        </div>
+
+        </div>
+        <!-- End Heading -->
+
+        </div>
+    </div>
+
+    <!-- End Card Grid -->
+{% endblock %}

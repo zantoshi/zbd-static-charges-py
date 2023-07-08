@@ -1,0 +1,23 @@
+{% extends 'staticcharges/base.html' %}
+{% load static %}
+
+{% block title %} Success! {% endblock %}
+
+
+{% block content %}
+
+    <!-- Card Grid -->
+    <div class="container content-space-2 content-space-lg-3" id="blogSection">
+        <!-- Heading -->
+        <div class="row" style="color: #d2daea;">
+        <h3 style=" color: #d2daea;" >Your static charge has been created!</h3>
+        <a href="{% url 'index' %}" class="btn btn-primary">Go back home</a>
+
+        </div>
+        <!-- End Heading -->
+
+        </div>
+    </div>
+
+    <!-- End Card Grid -->
+{% endblock %}
